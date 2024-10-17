@@ -1,0 +1,261 @@
+
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol,
+ul {
+  list-style: none;
+}
+blockquote,
+q {
+  quotes: none;
+}
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+a {
+  text-decoration: none;
+}
+/* \reset */
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #393E46;
+  background: url('https://images.unsplash.com/photo-1613427924240-1635577f2c32?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2134&q=80');
+  background-size: cover;
+}
+.main__container {
+  width: 414px;
+  height: 100vh;
+}
+.main__inner {
+  height: 100%;
+}
+.main__btn-container {
+  border-radius: 40px 40px 0 0;
+  background-color: #1A1E23;
+  flex: auto;
+  max-width: 414px;
+  justify-self: stretch;
+  padding: 36px;
+  padding-top: 64px;
+  margin-top: 64px;
+  box-sizing: border-box;
+  height: 500px;
+}
+h1,
+p {
+  color: #fff;
+  font-family: Roboto, sans-serif;
+}
+h1 {
+  font-size: 16px;
+  font-weight: bold;
+}
+p {
+  font-size: 14px;
+}
+.btn {
+  border: none;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 22px;
+  font-weight: bold;
+  font-family: Roboto, sans-serif;
+  height: 50px;
+  margin-top: 24px;
+  transition: 0.2s ease-in;
+  outline: none;
+}
+.filled-btn {
+  background-color: #DD3C4B;
+  color: #fff;
+}
+.filled-btn:hover {
+  background-color: #BD2836;
+}
+.filled-btn:active {
+  background-color: #BD2836;
+}
+.stroke-btn {
+  background-color: #1B1F23;
+  border: solid 1px #DD3C4B;
+  color: #DD3C4B;
+}
+.stroke-btn:hover {
+  background-color: #1A1E23;
+  border-color: #BD2836;
+  color: #BD2836;
+}
+.stroke-btn:active {
+  background-color: #1A1E23;
+  border-color: #BD2836;
+  color: #BD2836;
+}
+.social-media__container {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 100%;
+}
+.social-media__wrapper {
+  width: 248px;
+  margin: 0 36px;
+}
+.image__container {
+  margin-top: 40px;
+  margin-bottom: 20px;
+}
+.social-media {
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  font-size: 32px;
+  cursor: pointer;
+  transition: 0.2s ease-in;
+}
+.social-media--github {
+  background-color: #000000;
+}
+.social-media--github:hover {
+  background-color: #192b3d;
+}
+.social-media--github:active {
+  background-color: #ffffff;
+}
+.social-media--instagram {
+  background-color: #C13584;
+}
+.social-media--instagram:hover {
+  background-color: #A8246F;
+}
+.social-media--instagram:active {
+  background-color: #A8246F;
+}
+.social-media--linkedin {
+  background-color: #25D366;
+}
+.social-media--linkedin:hover {
+  background-color: #39b666;
+}
+.social-media--linkedin:active {
+  background-color: #25D366;
+}

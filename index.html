@@ -1,0 +1,532 @@
+
+<!DOCTYPE html>
+<html lang="en" >
+
+<head>
+  <meta charset="UTF-8">
+  
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png" />
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico" />
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
+
+    <link rel="stylesheet" href="navbar.css">
+
+  
+    <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
+
+
+  <title>CodePen - Cool Layout with Complex Chainable Animation</title>
+
+    <link rel="canonical" href="https://codepen.io/suez/pen/rLGvxr">
+  
+  
+  <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Open+Sans'>
+  
+<style>
+*, *:before, *:after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #021a40;
+  font-family: "Open Sans", Helvetica, Arial, sans-serif;
+}
+
+.cont {
+  position: relative;
+  overflow: hidden;
+  height: 100vh;
+  padding: 80px 70px;
+}
+.cont__inner {
+  position: relative;
+  height: 100%;
+}
+.cont__inner:hover .el__bg:after {
+  opacity: 1;
+}
+
+.el {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 26.66%; /* Adjusted width to make three elements occupy 80% */
+  height: 100%;
+  background: #252525;
+  transition: transform 0.6s 0.7s, width 0.7s, opacity 0.6s 0.7s, z-index 0s 1.3s;
+  will-change: transform, width, opacity;
+}
+.el:not(.s--active) {
+  cursor: pointer;
+}
+.el__overflow {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+}
+.el__inner {
+  overflow: hidden;
+  position: relative;
+  height: 100%;
+  transition: transform 1s;
+}
+.cont.s--inactive .el__inner {
+  transform: translate3d(0, 100%, 0);
+}
+.el__bg {
+  position: relative;
+  width: calc(100vw - 140px);
+  height: 100%;
+  transition: transform 0.6s 0.7s;
+  will-change: transform;
+}
+.el__bg:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -5%;
+  width: 100%;
+  height: 110%;
+  background-size: cover;
+  background-position: center center;
+  transition: transform 1s;
+  transform: translate3d(0, 0, 0) scale(1);
+}
+.cont.s--inactive .el__bg:before {
+  transform: translate3d(0, -100%, 0) scale(1.2);
+}
+.el.s--active .el__bg:before {
+  transition: transform 0.8s;
+}
+.el__bg:after {
+  content: "";
+  z-index: 1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.cont.s--el-active .el__bg:after {
+  transition: opacity 0.5s 1.4s;
+  opacity: 1 !important;
+}
+.el__preview-cont {
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  transition: all 0.3s 1.2s;
+}
+.cont.s--inactive .el__preview-cont {
+  opacity: 0;
+  transform: translateY(10px);
+}
+.cont.s--el-active .el__preview-cont {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.5s;
+}
+.el__heading {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 14px; /* Reduced font size */
+}
+.el__content {
+  z-index: -1;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  padding: 30px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.1s;
+}
+.el.s--active .el__content {
+  z-index: 2;
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0.5s 1.4s;
+}
+.el__text {
+  text-transform: uppercase;
+  font-size: 30px; /* Reduced font size */
+  color: #fff;
+}
+.el__close-btn {
+  z-index: -1;
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  width: 60px;
+  height: 60px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0s 0.45s;
+  cursor: pointer;
+}
+.el.s--active .el__close-btn {
+  z-index: 5;
+  opacity: 1;
+  pointer-events: auto;
+  transition: all 0s 1.4s;
+}
+.el__close-btn:before, .el__close-btn:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 100%;
+  height: 8px;
+  margin-top: -4px;
+  background: #fff;
+  opacity: 0;
+  transition: opacity 0s;
+}
+.el.s--active .el__close-btn:before, .el.s--active .el__close-btn:after {
+  opacity: 1;
+}
+.el__close-btn:before {
+  transform: rotate(45deg) translateX(100%);
+}
+.el.s--active .el__close-btn:before {
+  transition: all 0.3s 1.4s cubic-bezier(0.72, 0.09, 0.32, 1.57);
+  transform: rotate(45deg) translateX(0);
+}
+.el__close-btn:after {
+  transform: rotate(-45deg) translateX(100%);
+}
+.el.s--active .el__close-btn:after {
+  transition: all 0.3s 1.55s cubic-bezier(0.72, 0.09, 0.32, 1.57);
+  transform: rotate(-45deg) translateX(0);
+}
+.el__index {
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  bottom: -80px;
+  width: 100%;
+  height: 100%;
+  min-height: 250px;
+  text-align: center;
+  font-size: 20vw;
+  line-height: 0.85;
+  font-weight: bold;
+  transition: transform 0.5s, opacity 0.3s 1.4s;
+  transform: translate3d(0, 1vw, 0);
+}
+.el:hover .el__index {
+  transform: translate3d(0, 0, 0);
+}
+.cont.s--el-active .el__index {
+  transition: transform 0.5s, opacity 0.3s;
+  opacity: 0;
+}
+.el__index-back, .el__index-front {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.el__index-back {
+  color: #2f3840;
+  opacity: 0;
+  transition: opacity 0.25s 0.25s;
+}
+.el:hover .el__index-back {
+  transition: opacity 0.25s;
+  opacity: 1;
+}
+.el__index-overlay {
+  overflow: hidden;
+  position: relative;
+  transform: translate3d(0, 100%, 0);
+  transition: transform 0.5s 0.1s;
+  color: transparent;
+}
+.el__index-overlay:before {
+  content: attr(data-index);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  color: #fff;
+  transform: translate3d(0, -100%, 0);
+  transition: transform 0.5s 0.1s;
+}
+.el:hover .el__index-overlay {
+  transform: translate3d(0, 0, 0);
+}
+.el:hover .el__index-overlay:before {
+  transform: translate3d(0, 0, 0);
+}
+.el:nth-child(1) {
+  transform: translate3d(0%, 0, 0);
+  transform-origin: 50% 50%;
+}
+.cont.s--el-active .el:nth-child(1):not(.s--active) {
+  transform: scale(0.5) translate3d(0%, 0, 0);
+  opacity: 0;
+  transition: transform 0.95s, opacity 0.95s;
+}
+.el:nth-child(1) .el__inner {
+  transition-delay: 0s;
+}
+.el:nth-child(1) .el__bg {
+  transform: translate3d(0%, 0, 0);
+}
+.el:nth-child(1) .el__bg:before {
+  transition-delay: 0s;
+  background-image: url("https://img.freepik.com/fotos-premium/tubo-de-ensaio-de-laboratorio-de-ciencias-e-pipeta-com-gota-closeup-de-equipamento-de-laboratorio_488220-4424.jpg?ga=GA1.1.1360232575.1728961951&semt=ais_hybrid");
+}
+.el:nth-child(2) {
+  transform: translate3d(133.33%, 0, 0); /* Adjusted transform to match new width */
+  transform-origin: 183.33% 50%;
+}
+.cont.s--el-active .el:nth-child(2):not(.s--active) {
+  transform: scale(0.5) translate3d(133.33%, 0, 0); /* Adjusted transform to match new width */
+  opacity: 0;
+  transition: transform 0.95s, opacity 0.95s;
+}
+.el:nth-child(2) .el__inner {
+  transition-delay: 0.1s;
+}
+.el:nth-child(2) .el__bg {
+  transform: translate3d(-26.66%, 0, 0); /* Adjusted transform to match new width */
+}
+.el:nth-child(2) .el__bg:before {
+  transition-delay: 0.1s;
+  background-image: url("https://img.freepik.com/fotos-gratis/itens-de-investigacao-e-inovacao-para-a-celebracao-do-dia-mundial-da-ciencia_23-2151812408.jpg?ga=GA1.1.1360232575.1728961951&semt=ais_hybrid");
+}
+.el:nth-child(3) {
+  transform: translate3d(266.66%, 0, 0); /* Adjusted transform to match new width */
+  transform-origin: 316.66% 50%;
+}
+.cont.s--el-active .el:nth-child(3):not(.s--active) {
+  transform: scale(0.5) translate3d(266.66%, 0, 0); /* Adjusted transform to match new width */
+  opacity: 0;
+  transition: transform 0.95s, opacity 0.95s;
+}
+.el:nth-child(3) .el__inner {
+  transition-delay: 0.2s;
+}
+.el:nth-child(3) .el__bg {
+  transform: translate3d(-53.32%, 0, 0); /* Adjusted transform to match new width */
+}
+.el:nth-child(3) .el__bg:before {
+  transition-delay: 0.2s;
+  background-image: url("https://img.freepik.com/fotos-premium/uma-imagem-azul-e-preta-de-um-objeto-cientifico-com-o-texto-abaixo_1034303-512614.jpg?size=626&ext=jpg&ga=GA1.1.1360232575.1728961951&semt=ais_hybrid");
+}
+.el:nth-child(4) {
+  transform: translate3d(399.99%, 0, 0); /* Adjusted transform to match new width */
+  transform-origin: 449.99% 50%;
+}
+.cont.s--el-active .el:nth-child(4):not(.s--active) {
+  transform: scale(0.5) translate3d(399.99%, 0, 0); /* Adjusted transform to match new width */
+  opacity: 0;
+  transition: transform 0.95s, opacity 0.95s;
+}
+.el:nth-child(4) .el__inner {
+  transition-delay: 0.3s;
+}
+.el:nth-child(4) .el__bg {
+  transform: translate3d(-80%, 0, 0); /* Adjusted transform to match new width */
+}
+
+.el:hover .el__bg:after {
+  opacity: 0;
+}
+.el.s--active {
+  z-index: 1;
+  width: 100%;
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.6s, width 0.7s 0.7s, z-index 0s;
+}
+.el.s--active .el__bg {
+  transform: translate3d(0, 0, 0);
+  transition: transform 0.6s;
+}
+.el.s--active .el__bg:before {
+  transition-delay: 0.6s;
+  transform: scale(1.1);
+}
+
+.icon-link {
+  position: absolute;
+  left: 5px;
+  bottom: 5px;
+  width: 32px;
+}
+.icon-link img {
+  width: 100%;
+  vertical-align: top;
+}
+.icon-link--twitter {
+  left: auto;
+  right: 5px;
+}
+</style>
+
+  <script>
+  window.console = window.console || function(t) {};
+</script>
+
+  
+  <style type="text/css">
+
+  </style></head>
+
+  <body translate="no">
+    <div class="page-wrapper">
+      <div class="nav-wrapper">
+          <div class="grad-bar"></div>
+          <nav class="navbar">
+              <img src="data:image/png;base64,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" alt="Company Logo">
+              <div class="menu-toggle" id="mobile-menu" aria-expanded="false">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+              </div>
+              <ul class="nav no-search">
+                <li class="nav-item"><a href="index.html">Inicio</a></li>
+                <li class="nav-item"><a href="quimicos.html">Quimicos</a></li>
+                <li class="nav-item"><a href="tabela (1).html">Tabela</a></li>
+                <li class="nav-item"><a href="entre em contato.html">Contato</a></li>
+                <li class="nav-item"><a href="">Sobre</a></li>
+                <li class="nav-item"><span id="search-icon"><i class="fas fa-search"></i></span></li>
+                <input type="text" class="search-input" placeholder="Search...">
+            </ul>
+        </nav>
+    </div>
+
+    <nav>
+      <h1 style="text-align: center; color: white; padding: 20px; margin-top: 50px;">Algumas Áreas da Química </h1>
+      <!-- Navbar content from tabela2.html goes here -->
+    </nav>
+    <div class="cont s--inactive">
+    <!-- cont inner start -->
+    <div class="cont__inner">
+      <!-- el start -->
+      <div class="el">
+        <div class="el__overflow">
+          <div class="el__inner">
+            <div class="el__bg"></div>
+            <div class="el__preview-cont">
+              <h2 class="el__heading">Química Orgânica</h2>
+            </div>
+            <div class="el__content">
+              <div class="el__text">A Química Orgânica é uma das áreas mais vastas e dinâmicas da química, dedicada ao estudo dos compostos que contêm carbono. Esses compostos incluem uma ampla gama de substâncias, desde moléculas simples, como o metano, até estruturas complexas como proteínas e DNA. A importância da química orgânica se reflete em suas aplicações em diversas áreas, como farmacologia, biotecnologia e materiais. Por exemplo, o desenvolvimento de novos fármacos exige um profundo entendimento da química orgânica para projetar moléculas que possam interagir de maneira eficaz com alvos biológicos. Além disso, a química orgânica é fundamental na síntese de polímeros, que são amplamente utilizados em plásticos, borrachas e outros materiais.</div>
+              <div class="el__close-btn"></div>
+            </div>
+          </div>
+        </div>
+        <div class="el__index">
+          <div class="el__index-back">1</div>
+          <div class="el__index-front">
+            <div class="el__index-overlay" data-index="1">1</div>
+          </div>
+        </div>
+      </div>
+      <!-- el end -->
+      <!-- el start -->
+      <div class="el">
+        <div class="el__overflow">
+          <div class="el__inner">
+            <div class="el__bg"></div>
+            <div class="el__preview-cont">
+              <h2 class="el__heading"> Atomística</h2>
+            </div>
+            <div class="el__content">
+              <div class="el__text"> A Química Atomística estuda a estrutura e o comportamento dos átomos, a unidade fundamental da matéria. Essa área investiga a organização dos elétrons em orbitais e como essas configurações influenciam as propriedades químicas dos elementos. A compreensão da química atomística é crucial para explicar fenômenos como a reatividade química, as ligações e a formação de compostos. Além disso, a química atomística fornece a base para a compreensão de técnicas espectroscópicas que permitem a análise de substâncias em nível atômico, sendo essencial em campos como a física e a astrofísica.</div>
+              <div class="el__close-btn"></div>
+            </div>
+          </div>
+        </div>
+        <div class="el__index">
+          <div class="el__index-back">2</div>
+          <div class="el__index-front">
+            <div class="el__index-overlay" data-index="2">2</div>
+          </div>
+        </div>
+      </div>
+      <!-- el end -->
+      <!-- el start -->
+      <div class="el">
+        <div class="el__overflow">
+          <div class="el__inner">
+            <div class="el__bg"></div>
+            <div class="el__preview-cont">
+              <h2 class="el__heading">Química Inorgânicas</h2>
+            </div>
+            <div class="el__content">
+              <div class="el__text">A Química Inorgânica, por sua vez, foca no estudo dos elementos e compostos que não são baseados em carbono. Essa área abrange uma diversidade de substâncias, incluindo sais, metais, óxidos e complexos de coordenação. A química inorgânica é essencial para entender processos em áreas como a catalise, onde metais de transição desempenham papéis cruciais na aceleração de reações químicas. Ela também se conecta a disciplinas como a química dos materiais, onde o estudo de cerâmicas e metais é fundamental para o desenvolvimento de novos produtos. Além disso, a química inorgânica é vital para aplicações ambientais, como o tratamento de água e a remediação de solos contaminados.</div>
+              <div class="el__close-btn"></div>
+            </div>
+          </div>
+        </div>
+        <div class="el__index">
+          <div class="el__index-back">3</div>
+          <div class="el__index-front">
+            <div class="el__index-overlay" data-index="3">3</div>
+          </div>
+        </div>
+      </div>
+      <!-- el end -->
+    </div>
+    <!-- cont inner end -->
+  </div>
+
+<a href="https://dribbble.com/shots/2802024-Satellite-Website-Prototype" target="_blank" class="icon-link">
+  <img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png">
+</a>
+<a href="https://twitter.com/NikolayTalanov" target="_blank" class="icon-link icon-link--twitter">
+  <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png">
+</a>
+      <script id="rendered-js" >
+var $cont = document.querySelector('.cont');
+var $elsArr = [].slice.call(document.querySelectorAll('.el'));
+var $closeBtnsArr = [].slice.call(document.querySelectorAll('.el__close-btn'));
+
+setTimeout(function () {
+  $cont.classList.remove('s--inactive');
+}, 200);
+
+$elsArr.forEach(function ($el) {
+  $el.addEventListener('click', function () {
+    if (this.classList.contains('s--active')) return;
+    $cont.classList.add('s--el-active');
+    this.classList.add('s--active');
+  });
+});
+
+$closeBtnsArr.forEach(function ($btn) {
+  $btn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    $cont.classList.remove('s--el-active');
+    document.querySelector('.el.s--active').classList.remove('s--active');
+  });
+});
+//# sourceURL=pen.js
+    </script>
+
+<script src="navbar.js"></script>
+</body>
+
+</html>
