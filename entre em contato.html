@@ -14,12 +14,12 @@
 
     <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111" />
 
+    <link rel="stylesheet" href="navbar.css">
 
-
+    
   
-  
 
-  <title>CodePen - Contact Page Design</title>
+  <title>Entre em contato</title>
 
     <link rel="canonical" href="https://codepen.io/souzasamuelp/pen/dyzMYxQ">
   
@@ -33,8 +33,8 @@ body {
     height: 100vh;
     margin: 0;
     color: white;
-    background: rgb(87,141,246);
-    font-size: 20px;
+    background: rgb(62, 100, 175);
+    font-size: 18px; /* Reduced font size */
     font-family: 'Assistant', sans-serif;
 }
 
@@ -45,11 +45,12 @@ body {
     justify-content: center;
     align-content: center;
     height: 100%;
+    margin-top: 80px; /* Adjusted margin */
 }
 
 .base {
     display: grid;
-    padding: 3.5rem;
+    padding: 3rem; /* Adjusted padding */
     grid-template-columns: 3fr 2fr;
     align-items: center;
     background: #1b2259;
@@ -57,7 +58,7 @@ body {
 }
 
 .contact {
-    padding: 0 4rem 0 2rem;
+    padding: 0 3rem 0 1.5rem; /* Adjusted padding */
 }
 
 header {
@@ -66,18 +67,18 @@ header {
 
 header h1 {
     margin: 0;
-    font-size: 2.5rem;
+    font-size: 2.2rem; /* Reduced font size */
     font-family: 'Merriweather Sans', sans-serif;
 }
 
 .info {
     width: 75%;
-    padding: 3rem 0;
+    padding: 2.5rem 0; /* Adjusted padding */
     list-style: none;
 }
 
 .info li {
-    padding: 1rem 1.5rem;
+    padding: 0.8rem 1.2rem; /* Adjusted padding */
     border-style: solid;
     border-color: #1b2259;
 }
@@ -91,11 +92,11 @@ header h1 {
 }
 
 .info li:last-of-type  {
-    padding-left: 1.8rem;
+    padding-left: 1.5rem; /* Adjusted padding */
 }
 
 .info i {
-    margin-right: 1.5rem;
+    margin-right: 1.2rem; /* Adjusted margin */
     color: #234AE2;
 }
 
@@ -105,24 +106,24 @@ header h1 {
 }
 
 .social-div {
-    padding-left: 2rem;
+    padding-left: 1.5rem; /* Adjusted padding */
 }
 
 .social {
     display: grid;
     grid-auto-flow: column;
     justify-content: start;   
-    padding-left: 3rem; 
+    padding-left: 2.5rem; /* Adjusted padding */
     list-style: none;
 }
 
 .social li{
     position: relative;    
     display: inline-block;
-    margin: 0 0.5rem 0 0;
-    height: 65px;
-    width: 65px;
-    font-size: 1.5rem;
+    margin: 0 0.4rem 0 0; /* Adjusted margin */
+    height: 60px; /* Adjusted height */
+    width: 60px; /* Adjusted width */
+    font-size: 1.3rem; /* Adjusted font size */
     border-radius: 50%;
 }
 
@@ -132,8 +133,8 @@ header h1 {
 
 .social i {
     position: absolute;
-    top: 20px;
-    left: 21px;
+    top: 18px; /* Adjusted position */
+    left: 18px; /* Adjusted position */
 }
 
 .social li:hover{
@@ -156,7 +157,7 @@ ul.social {
 }
 
 .form-div form {
-    padding: 2rem;
+    padding: 1.5rem; /* Adjusted padding */
 }
 
 .form-div label {
@@ -164,16 +165,16 @@ ul.social {
 }
 
 .form-div input {
-    margin: 7px 0 20px 0;
-    padding: 5px 10px 5px 50px;
+    margin: 5px 0 15px 0; /* Adjusted margin */
+    padding: 5px 10px 5px 45px; /* Adjusted padding */
     width: 100%;
-    height: 50px;
+    height: 45px; /* Adjusted height */
     background: #F9FAFC;
     border-style: solid;
     border-color: #d6d6d6;
     border-radius: 5px;
     border-width: 2px;
-    font-size: 20px;
+    font-size: 18px; /* Adjusted font size */
     box-sizing: border-box; 
 }
 
@@ -192,23 +193,22 @@ ul.social {
 
 .form-div .inputWithIcon i {
     position: absolute;
-    top: 40px;
+    top: 35px; /* Adjusted position */
     left: 10px;
     padding: 9px 8px;
     color: #d6d6d6;
 }
 
-
 .form-div textarea {
     width: 100%;
-    height: 150px;
-    margin: 7px 0 30px 0;
+    height: 140px; /* Adjusted height */
+    margin: 5px 0 25px 0; /* Adjusted margin */
     padding: 15px 10px 5px 16px;
     background: #f3f3f3;
     border-radius: 5px;
-    border-color: #F9FAFC;
+    border-color: #d6d6d6;
     border-width: 2px;
-    font-size: 20px;
+    font-size: 18px; /* Adjusted font size */
     box-sizing: border-box; 
     resize: none;
 }
@@ -223,15 +223,14 @@ ul.social {
 }
 
 .form-div button {
-    margin-left: 110px;
-    padding: 1rem 3rem;
+    margin-left: 100px; /* Adjusted margin */
+    padding: 1rem 2.5rem; /* Adjusted padding */
     color: #F9FAFC;
     background: #234AE2;
     border: none;
     border-radius: 5px;
-    font-size: 20px;
+    font-size: 18px; /* Adjusted font size */
 }
-
 
 @media (max-width: 1200px) { 
     .container {
@@ -239,6 +238,7 @@ ul.social {
         height: 125%;
     } 
     .base {
+        top: 50px;
         padding: 20px;
         grid-template-columns: 1fr;
     }
@@ -279,8 +279,8 @@ ul.social {
         position: relative;    
         display: inline-block;
         margin: 0;
-        height: 65px;
-        width: 65px;
+        height: 60px; /* Adjusted height */
+        width: 60px; /* Adjusted width */
         font-size: 0;
         border-radius: 50%;
     }
@@ -291,8 +291,8 @@ ul.social {
     
     .social i {
         position: absolute;
-        top: 20px;
-        left: 21px;
+        top: 18px; /* Adjusted position */
+        left: 18px; /* Adjusted position */
     }
     
     .form-div {
@@ -310,10 +310,10 @@ ul.social {
         margin: 0;
         padding: 0 0 0 35px;
         width: 100%;
-        height: 50px;
+        height: 45px; /* Adjusted height */
         border-radius: 5px;
         border-width: 2px;
-        font-size: 20px;
+        font-size: 18px; /* Adjusted font size */
         box-sizing: border-box; 
     }
     
@@ -323,7 +323,7 @@ ul.social {
     
     .form-div .inputWithIcon i {
         position: absolute;
-        top: 40px;
+        top: 35px; /* Adjusted position */
         left: 10px;
         padding: 0;
         color: #d6d6d6;
@@ -331,12 +331,12 @@ ul.social {
         
     .form-div textarea {
         width: 100%;
-        height: 150px;
+        height: 140px; /* Adjusted height */
         margin: 0;
         padding: 0;
         border-radius: 5px;
         border-width: 2px;
-        font-size: 20px;
+        font-size: 18px; /* Adjusted font size */
     }
     
     .form-div button {
@@ -344,7 +344,7 @@ ul.social {
         padding: 10px 20px;
         border: none;
         border-radius: 5px;
-        font-size: 20px;
+        font-size: 18px; /* Adjusted font size */
     }
 }
 </style>
@@ -358,6 +358,26 @@ ul.social {
 <style type="text/css">
 
 </style></head>
+<body translate="no">
+    <div class="page-wrapper">
+      <div class="nav-wrapper">
+          <div class="grad-bar"></div>
+          <nav class="navbar">
+              <img src="data:image/png;base64,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" alt="Company Logo">
+              <div class="menu-toggle" id="mobile-menu" aria-expanded="false">
+                  <span class="bar"></span>
+                  <span class="bar"></span>
+              </div>
+              <ul class="nav no-search">
+                <li class="nav-item"><a href="index.html">Inicio</a></li>
+                <li class="nav-item"><a href="quimicos.html">Quimicos</a></li>
+                <li class="nav-item"><a href="tabela (1).html">Tabela</a></li>
+                <li class="nav-item"><a href="termos quimicos.html">termos quimicos</a></li>
+                <li class="nav-item"><a href="entre em contato.html">Contato</a></li>
+              
+            </ul>
+        </nav>
+    </div>
 
 <body translate="no">
   <!DOCTYPE html>
@@ -387,7 +407,7 @@ ul.social {
                                 <li><i class="fab fa-instagram"></i></li>
                             </a>
                            
-                            <a href="https://github.com/souzasamuelp">
+                            <a href="https://github.com/ThalesFiocco/site-de-quimica.git">
                                 <li><i class="fab fa-github"></i></li>
                             </a>
                         </ul>

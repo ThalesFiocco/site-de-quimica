@@ -20,7 +20,7 @@
     <script src="https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js"></script>
 
 
-  <title>CodePen - Cool Layout with Complex Chainable Animation</title>
+  <title>Site Thales e Perez</title>
 
     <link rel="canonical" href="https://codepen.io/suez/pen/rLGvxr">
   
@@ -154,10 +154,11 @@ body {
   top: 0;
   width: 100%;
   height: 100%;
-  padding: 30px;
-  opacity: 0;
+  padding: 50px;
+  opacity: 30px;
   pointer-events: none;
   transition: all 0.1s;
+  font-style: italic;
 }
 .el.s--active .el__content {
   z-index: 2;
@@ -171,19 +172,24 @@ body {
   color: #fff;
 }
 .el__close-btn {
-  z-index: -1;
+  z-index: 5;
   position: absolute;
   right: 10px;
   top: 10px;
-  width: 60px;
-  height: 60px;
+  width: 30px;
+  height: 30px;
   opacity: 0;
   pointer-events: none;
   transition: all 0s 0.45s;
   cursor: pointer;
+  font-style: italic;
+  background: rgba(0, 0, 0, 0.5); /* Added background for the box */
+  border-radius: 50%; /* Rounded corners for the box */
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .el.s--active .el__close-btn {
-  z-index: 5;
   opacity: 1;
   pointer-events: auto;
   transition: all 0s 1.4s;
@@ -191,12 +197,9 @@ body {
 .el__close-btn:before, .el__close-btn:after {
   content: "";
   position: absolute;
-  left: 0;
-  top: 50%;
-  width: 100%;
-  height: 8px;
-  margin-top: -4px;
-  background: #fff;
+  width: 60%;
+  height: 2px;
+  background: #ff0000;
   opacity: 0;
   transition: opacity 0s;
 }
@@ -204,18 +207,16 @@ body {
   opacity: 1;
 }
 .el__close-btn:before {
-  transform: rotate(45deg) translateX(100%);
+  transform: rotate(45deg);
 }
 .el.s--active .el__close-btn:before {
   transition: all 0.3s 1.4s cubic-bezier(0.72, 0.09, 0.32, 1.57);
-  transform: rotate(45deg) translateX(0);
 }
 .el__close-btn:after {
-  transform: rotate(-45deg) translateX(100%);
+  transform: rotate(-45deg);
 }
 .el.s--active .el__close-btn:after {
   transition: all 0.3s 1.55s cubic-bezier(0.72, 0.09, 0.32, 1.57);
-  transform: rotate(-45deg) translateX(0);
 }
 .el__index {
   overflow: hidden;
@@ -384,6 +385,7 @@ body {
   right: 5px;
 }
 </style>
+</style>
 
   <script>
   window.console = window.console || function(t) {};
@@ -408,8 +410,8 @@ body {
                 <li class="nav-item"><a href="index.html">Inicio</a></li>
                 <li class="nav-item"><a href="quimicos.html">Quimicos</a></li>
                 <li class="nav-item"><a href="tabela (1).html">Tabela</a></li>
-                <li class="nav-item"><a href="entre em contato.html">Contato</a></li>
-                <li class="nav-item"><a href="">Sobre</a></li>
+                <li class="nav-item"><a href="termos quimicos.html">termos quimicos</a></li>
+                <li class="nav-item"><a href="entre em contato.html"> contato</a></li>
                 <li class="nav-item"><span id="search-icon"><i class="fas fa-search"></i></span></li>
                 <input type="text" class="search-input" placeholder="Search...">
             </ul>
@@ -493,12 +495,8 @@ body {
     <!-- cont inner end -->
   </div>
 
-<a href="https://dribbble.com/shots/2802024-Satellite-Website-Prototype" target="_blank" class="icon-link">
-  <img src="http://icons.iconarchive.com/icons/uiconstock/socialmedia/256/Dribbble-icon.png">
-</a>
-<a href="https://twitter.com/NikolayTalanov" target="_blank" class="icon-link icon-link--twitter">
-  <img src="https://cdn1.iconfinder.com/data/icons/logotypes/32/twitter-128.png">
-</a>
+
+
       <script id="rendered-js" >
 var $cont = document.querySelector('.cont');
 var $elsArr = [].slice.call(document.querySelectorAll('.el'));

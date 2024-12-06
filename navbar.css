@@ -365,7 +365,7 @@ input {
         flex-direction: column;
         position: fixed;
         justify-content: start;
-        top: 55px;
+        top: 100px;
         background-color: rgba(255, 255, 255, 0.9); /* Fundo branco semi-transparente */
         width: 100%;
         height: calc(100vh - 55px);
